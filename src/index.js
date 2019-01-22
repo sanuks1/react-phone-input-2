@@ -42,6 +42,7 @@ class ReactPhoneInput extends React.Component {
     enableLongNumbers: PropTypes.bool,
     countryCodeEditable: PropTypes.bool,
     enableSearchField: PropTypes.bool,
+    numberTrailing: PropTypes.number,
 
     regions: PropTypes.oneOfType([
       PropTypes.string,
@@ -93,6 +94,7 @@ class ReactPhoneInput extends React.Component {
     enableLongNumbers: false,
     countryCodeEditable: true,
     enableSearchField: false,
+    numberTrailing: 0,
 
     regions: '',
 
@@ -113,7 +115,10 @@ class ReactPhoneInput extends React.Component {
 
   constructor(props) {
     super(props);
-    let filteredCountries = countryData.allCountries;
+    let filteredCountries = countryData.allCountries.map(c => ({
+      ...c, format:
+      c.format ? c.format.concat(".".repeat(Math.max(0, props.numberTrailing))) : undefined
+    }))
 
     if (props.disableAreaCodes) filteredCountries = this.deleteAreaCodes(filteredCountries);
     if (props.regions) filteredCountries = this.filterRegions(props.regions, filteredCountries);
@@ -465,8 +470,8 @@ class ReactPhoneInput extends React.Component {
         }
     }
 
-    //Does not exceed 15 digit phone number limit
-    if (e.target.value.replace(/\D/g, '').length > 15) {
+    //Does not exceed 15+{numberTrailing} digit phone number limit
+    if (e.target.value.replace(/\D/g, '').length > 15+Math.max(0, this.props.numberTrailing)) {
       return;
     }
 
