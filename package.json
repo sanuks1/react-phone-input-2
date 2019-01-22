@@ -1,5 +1,5 @@
 {
-  "name": "react-phone-input-3",
+  "name": "react-phone-input-2-fork",
   "version": "2.7.1",
   "description": "Fork of react-phone-input-2",
   "main": "dist/index.js",
@@ -10,7 +10,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "https://github.com/bl00mber/react-phone-input-2"
+    "url": "https://github.com/sanuks1/react-phone-input-2"
   },
   "keywords": [
     "react",
@@ -20,9 +20,9 @@
   ],
   "license": "MIT",
   "bugs": {
-    "url": "https://github.com/bl00mber/react-phone-input-2/issues"
+    "url": "https://github.com/sanuks1/react-phone-input-2/issues"
   },
-  "homepage": "https://github.com/bl00mber/react-phone-input-2",
+  "homepage": "https://github.com/sanuks1/react-phone-input-2",
   "devDependencies": {
     "babel-core": "^6.9.1",
     "babel-loader": "^6.2.4",
